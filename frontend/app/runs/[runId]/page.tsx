@@ -6,9 +6,7 @@ import { prototypeData } from "@/data/prototype";
 
 export default async function RunDetailPage({ params }: { params: Promise<{ runId: string }> }) {
   const { runId } = await params;
-  const run =
-    prototypeData.runs.find((candidate) => candidate.id === runId) ??
-    prototypeData.runs.find((candidate) => candidate.id === "BUG-1842");
+  const run = prototypeData.runs.find((candidate) => candidate.id === runId);
 
   if (!run) {
     return (
@@ -41,7 +39,7 @@ export default async function RunDetailPage({ params }: { params: Promise<{ runI
           <div className="mt-4">
             <ActionBar
               actions={[
-                { label: "View Gate Result", icon: ShieldCheck, variant: "primary" },
+                { label: "View Gate Result", icon: ShieldCheck, href: "/gates", variant: "primary" },
                 { label: "Request Fix", icon: RotateCcw },
                 { label: "Pause Run", icon: CirclePause, variant: "danger" }
               ]}
