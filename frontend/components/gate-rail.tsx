@@ -13,7 +13,7 @@ export function GateRail({ gates }: { gates: Gate[] }) {
       <h2 className="text-sm font-semibold text-text">Approval Rail</h2>
       <div className="mt-4 space-y-3">
         {gates.map((gate) => (
-          <div key={gate.id} className="flex items-start justify-between gap-3 border-l-2 border-line pl-3">
+          <div key={gate.id} aria-label={`${gate.id} ${gate.status}`} className="flex items-start justify-between gap-3 border-l-2 border-line pl-3">
             <div>
               <p className="text-sm font-semibold">{gate.id}</p>
               <p className="text-sm text-muted">{gate.name}</p>

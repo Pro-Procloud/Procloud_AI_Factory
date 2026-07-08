@@ -17,8 +17,7 @@ describe("AppShell", () => {
     }
 
     for (const gate of prototypeData.gates) {
-      expect(screen.getByText(gate.id)).toBeInTheDocument();
-      expect(screen.getAllByText(gate.status).length).toBeGreaterThan(0);
+      expect(screen.getByLabelText(`${gate.id} ${gate.status}`)).toBeInTheDocument();
     }
   });
 });
