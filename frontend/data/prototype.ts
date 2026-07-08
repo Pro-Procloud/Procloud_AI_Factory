@@ -13,25 +13,27 @@ export const prototypeData: PrototypeData = {
     { id: "G3", name: "MR Approval", status: "Active", description: "Bugfix 主线当前激活的人类审批点" },
     { id: "G4", name: "Release Approval", status: "Coming Next", description: "发布审批与 canary 验证扩展位" }
   ],
-  primaryRun: {
-    id: "BUG-1842",
-    title: "订单退款状态异常",
-    source: "Plane issue_created",
-    risk: "Medium",
-    costUsed: 4.8,
-    costLimit: 15,
-    reviewLoop: "1 / 3",
-    workflow: ["Plane Issue", "AI Run", "Review Loop", "G3 MR Approval", "MR"],
-    timeline: [
-      { status: "received", label: "Webhook received", actor: "Plane", detail: "Issue BUG-1842 entered Gateway", time: "09:12" },
-      { status: "deduped", label: "Idempotency checked", actor: "Gateway", detail: "Redis SETNX accepted first delivery", time: "09:12" },
-      { status: "classified", label: "Bugfix workflow selected", actor: "LangGraph", detail: "FactoryState initialized", time: "09:13" },
-      { status: "branch_created", label: "Branch created", actor: "SCM", detail: "bugfix/BUG-1842-refund-status", time: "09:14" },
-      { status: "coding_running", label: "Patch generated", actor: "backend_coder", detail: "Refund status transition adjusted", time: "09:24" },
-      { status: "review_running", label: "Review running", actor: "review_agent", detail: "Security audit and test scan in progress", time: "09:31" },
-      { status: "mr_ready", label: "MR ready", actor: "SCM", detail: "Diff summary available for G3 approval", time: "09:38" }
-    ]
-  },
+  runs: [
+    {
+      id: "BUG-1842",
+      title: "订单退款状态异常",
+      source: "Plane issue_created",
+      risk: "Medium",
+      costUsed: 4.8,
+      costLimit: 15,
+      reviewLoop: "1 / 3",
+      workflow: ["Plane Issue", "AI Run", "Review Loop", "G3 MR Approval", "MR"],
+      timeline: [
+        { status: "received", label: "Webhook received", actor: "Plane", detail: "Issue BUG-1842 entered Gateway", time: "09:12" },
+        { status: "deduped", label: "Idempotency checked", actor: "Gateway", detail: "Redis SETNX accepted first delivery", time: "09:12" },
+        { status: "classified", label: "Bugfix workflow selected", actor: "LangGraph", detail: "FactoryState initialized", time: "09:13" },
+        { status: "branch_created", label: "Branch created", actor: "SCM", detail: "bugfix/BUG-1842-refund-status", time: "09:14" },
+        { status: "coding_running", label: "Patch generated", actor: "backend_coder", detail: "Refund status transition adjusted", time: "09:24" },
+        { status: "review_running", label: "Review running", actor: "review_agent", detail: "Security audit and test scan in progress", time: "09:31" },
+        { status: "mr_ready", label: "MR ready", actor: "SCM", detail: "Diff summary available for G3 approval", time: "09:38" }
+      ]
+    }
+  ],
   issues: [
     { id: "BUG-1842", title: "订单退款状态异常", source: "Plane", type: "Bugfix", dedupeStatus: "new", readiness: "Ready for workflow" },
     { id: "BUG-1841", title: "库存同步偶发延迟", source: "Plane", type: "Bugfix", dedupeStatus: "deduped", readiness: "Duplicate webhook ignored" },

@@ -4,7 +4,9 @@ import { formatCurrency, formatPercent } from "@/lib/format";
 
 describe("prototype data", () => {
   it("contains the approved Bugfix workflow and visible future gates", () => {
-    expect(prototypeData.primaryRun.workflow).toEqual([
+    const primaryRun = prototypeData.runs.find((run) => run.id === "BUG-1842");
+
+    expect(primaryRun?.workflow).toEqual([
       "Plane Issue",
       "AI Run",
       "Review Loop",

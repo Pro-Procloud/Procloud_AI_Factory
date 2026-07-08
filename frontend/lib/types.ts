@@ -83,7 +83,7 @@ export interface ArchitectureNode {
 export interface PrototypeData {
   metrics: Metric[];
   gates: Gate[];
-  primaryRun: Run;
+  runs: Run[];
   issues: Issue[];
   agents: Agent[];
   auditObjects: AuditObject[];
