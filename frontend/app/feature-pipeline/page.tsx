@@ -2,6 +2,9 @@ import { AppShell } from "@/components/app-shell";
 import { prototypeData } from "@/data/prototype";
 
 export default function FeaturePipelinePage() {
+  const expansionGates = prototypeData.gates.filter((gate) => gate.id !== "G3");
+  const activeBugfixGate = prototypeData.gates.find((gate) => gate.id === "G3");
+
   return (
     <AppShell active="Feature Pipeline">
       <section className="rounded-md border border-line bg-panel p-5 shadow-subtle">
@@ -11,7 +14,7 @@ export default function FeaturePipelinePage() {
           第一版原型只激活 Bugfix 的 G3 MR Approval；Feature workflow 在这里展示未来扩展位。
         </p>
         <div className="mt-4 grid gap-3 md:grid-cols-2">
-          {prototypeData.gates.map((gate) => (
+          {expansionGates.map((gate) => (
             <div key={gate.id} className="rounded-md border border-line p-4">
               <p className="text-sm font-semibold">
                 {gate.id}: {gate.name}
@@ -21,6 +24,16 @@ export default function FeaturePipelinePage() {
             </div>
           ))}
         </div>
+        {activeBugfixGate ? (
+          <div className="mt-4 rounded-md border border-line bg-surface p-4">
+            <p className="text-sm font-semibold">
+              Current Bugfix lane: {activeBugfixGate.id} {activeBugfixGate.name}
+            </p>
+            <p className="mt-2 text-sm text-muted">
+              {activeBugfixGate.description}. It remains active in Gates while this page focuses on Feature Pipeline expansion.
+            </p>
+          </div>
+        ) : null}
       </section>
     </AppShell>
   );
