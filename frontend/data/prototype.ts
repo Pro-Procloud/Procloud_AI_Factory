@@ -76,5 +76,32 @@ export const prototypeData: PrototypeData = {
     { name: "Agent Registry", responsibility: "解析可用 Agent、能力、权限和执行约束" },
     { name: "backend_coder / review_agent", responsibility: "执行编码、审查、安全审计和修复循环" },
     { name: "SCM / MR", responsibility: "创建分支、提交、推送、创建 MR" }
+  ],
+  teamGitPolicy: [
+    {
+      name: "Branch ownership",
+      responsibility: "每个 AI Run 创建独立短生命周期分支，命名格式为 bugfix/{issue-id}-{slug} 或 feature/{issue-id}-{slug}",
+      owner: "LangGraph + SCM"
+    },
+    {
+      name: "Protected branches",
+      responsibility: "main、release/* 和 hotfix/* 只允许通过 MR 合入，Agent 禁止直接提交或 force push",
+      owner: "SCM policy"
+    },
+    {
+      name: "Team review handoff",
+      responsibility: "G3 MR Approval 必须显示 reviewer、approval、request-fix、escalation 和最终 merge owner",
+      owner: "Gate Console"
+    },
+    {
+      name: "Parallel work safety",
+      responsibility: "检测同一文件或模块的并行 AI Run，冲突时暂停自动推进并升级人工协调",
+      owner: "FactoryState"
+    },
+    {
+      name: "Git audit trail",
+      responsibility: "FactoryEvent 记录 branch_created、commit_pushed、mr_opened、review_requested、merge_ready 等 Git 事件",
+      owner: "Audit log"
+    }
   ]
 };

@@ -33,6 +33,18 @@ describe("prototype data", () => {
     expect(prototypeData.failureScenarios.map((item) => item.scenario)).toContain("成本超限");
   });
 
+  it("contains team programming and Git branch governance requirements", () => {
+    expect(prototypeData.teamGitPolicy.map((item) => item.name)).toEqual([
+      "Branch ownership",
+      "Protected branches",
+      "Team review handoff",
+      "Parallel work safety",
+      "Git audit trail"
+    ]);
+    expect(prototypeData.teamGitPolicy.map((item) => item.responsibility).join(" ")).toContain("force push");
+    expect(prototypeData.teamGitPolicy.map((item) => item.responsibility).join(" ")).toContain("并行 AI Run");
+  });
+
   it("formats command center metrics", () => {
     expect(formatCurrency(4.8)).toBe("$4.80");
     expect(formatPercent(0.68)).toBe("68%");

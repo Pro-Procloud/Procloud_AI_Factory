@@ -15,5 +15,6 @@ test("clicks through the Bugfix prototype flow", async ({ page }) => {
 
   await page.getByRole("link", { name: "Architecture" }).click();
   await expect(page.getByRole("heading", { name: "Plane → Gateway → LangGraph → Agent → MR" })).toBeVisible();
-  await expect(page.getByText("FactoryEvent")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Team programming and Git branch policy" })).toBeVisible();
+  await expect(page.getByText("FactoryEvent", { exact: true })).toBeVisible();
 });

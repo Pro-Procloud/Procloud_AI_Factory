@@ -14,6 +14,18 @@ export default function ArchitectureTracePage() {
         </div>
         <ArchitectureFlow nodes={prototypeData.architecture} />
         <section className="rounded-md border border-line bg-panel p-4 shadow-subtle">
+          <h2 className="text-base font-semibold">Team programming and Git branch policy</h2>
+          <div className="mt-3 divide-y divide-line">
+            {prototypeData.teamGitPolicy.map((item) => (
+              <div key={item.name} className="grid gap-2 py-3 text-sm md:grid-cols-[0.9fr_2fr_0.8fr]">
+                <p className="font-semibold">{item.name}</p>
+                <p className="text-muted">{item.responsibility}</p>
+                <p className="text-muted">{item.owner}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="rounded-md border border-line bg-panel p-4 shadow-subtle">
           <h2 className="text-base font-semibold">Failure handling</h2>
           <div className="mt-3 divide-y divide-line">
             {prototypeData.failureScenarios.map((item) => (

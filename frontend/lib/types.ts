@@ -80,6 +80,12 @@ export interface ArchitectureNode {
   responsibility: string;
 }
 
+export interface TeamGitPolicy {
+  name: string;
+  responsibility: string;
+  owner: string;
+}
+
 export interface PrototypeData {
   metrics: Metric[];
   gates: Gate[];
@@ -89,4 +95,5 @@ export interface PrototypeData {
   auditObjects: AuditObject[];
   failureScenarios: FailureScenario[];
   architecture: ArchitectureNode[];
+  teamGitPolicy: TeamGitPolicy[];
 }

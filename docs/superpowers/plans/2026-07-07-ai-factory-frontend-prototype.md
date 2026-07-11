@@ -16,6 +16,7 @@
 - Static data only; do not connect to real Plane, SCM, LangGraph, Agent calls, or auth.
 - Show audit concepts: `FactoryEvent`, `GateResult`, `Approval`, `BudgetEvent`.
 - Show failure handling: duplicate webhook, HMAC failure, review loop, max review escalation, budget pause, agent failure.
+- Show team programming and Git branch management: short-lived run branches, protected branch rules, Agent Git permissions, reviewer handoff, parallel change conflict detection, and Git audit events.
 - UI should feel like a dense operational tool: restrained, scannable, no marketing landing page, no oversized hero.
 - Use icons in action buttons where useful; avoid decorative gradients, nested cards, and purely illustrative filler.
 
@@ -1170,6 +1171,12 @@ export default function IssueInboxPage() {
 
 Create `frontend/app/agents/page.tsx`:
 
+Requirements:
+
+- Use `prototypeData.agents`.
+- Show `permissions` and `limits`.
+- Show team programming guardrails so reviewers can confirm which Git operations each Agent may perform and which operations require human ownership.
+
 ```tsx
 import { AppShell } from "@/components/app-shell";
 import { prototypeData } from "@/data/prototype";
@@ -1207,6 +1214,13 @@ export default function AgentRegistryPage() {
 - [ ] **Step 4: Implement Architecture Trace**
 
 Create `frontend/app/architecture/page.tsx`:
+
+Requirements:
+
+- Display `ArchitectureFlow`.
+- Display team programming and Git branch policy, including branch naming, protected branch rules, reviewer handoff, conflict detection, and Git audit events.
+- Display failure scenario table from `prototypeData.failureScenarios`.
+- Display `AuditLog`.
 
 ```tsx
 import { AppShell } from "@/components/app-shell";

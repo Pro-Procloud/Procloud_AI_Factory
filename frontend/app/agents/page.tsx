@@ -9,6 +9,18 @@ export default function AgentRegistryPage() {
           <p className="text-sm text-muted">Agent Registry</p>
           <h1 className="mt-1 text-2xl font-semibold">Agent capabilities and boundaries</h1>
         </div>
+        <section className="rounded-md border border-line bg-panel p-4 shadow-subtle">
+          <h2 className="text-base font-semibold">Team programming guardrails</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-2">
+            {prototypeData.teamGitPolicy.slice(0, 4).map((item) => (
+              <div key={item.name} className="rounded-md border border-line p-3">
+                <p className="text-sm font-semibold">{item.name}</p>
+                <p className="mt-1 text-sm text-muted">{item.responsibility}</p>
+                <p className="mt-2 text-xs text-muted">Owner: {item.owner}</p>
+              </div>
+            ))}
+          </div>
+        </section>
         <div className="grid gap-3 md:grid-cols-2">
           {prototypeData.agents.map((agent) => (
             <article key={agent.id} className="rounded-md border border-line bg-panel p-4 shadow-subtle">
