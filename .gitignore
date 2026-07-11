@@ -1,0 +1,7 @@
+.superpowers/
+.DS_Store
+.worktrees/
+frontend/.next/
+frontend/node_modules/
+frontend/test-results/
+frontend/playwright-report/
