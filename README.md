@@ -7,6 +7,7 @@ The clickable AI Factory prototype lives in `frontend/`.
 ```bash
 cd frontend
 npm install
+npx playwright install chromium
 npm run dev
 ```
 
