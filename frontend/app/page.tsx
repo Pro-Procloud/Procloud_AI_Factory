@@ -59,6 +59,19 @@ export default function CommandCenterPage() {
             </p>
           </div>
         </section>
+        <section className="rounded-md border border-line bg-panel p-4 shadow-subtle">
+          <h2 className="text-base font-semibold">Recovery queue</h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {prototypeData.failureScenarios
+              .filter((item) => ["超过最大 review 轮次", "成本超限", "Agent 执行失败"].includes(item.scenario))
+              .map((item) => (
+                <div key={item.scenario} className="rounded-md border border-line p-3">
+                  <p className="text-sm font-semibold">{item.scenario}</p>
+                  <p className="mt-1 text-sm text-muted">{item.userFeedback}</p>
+                </div>
+              ))}
+          </div>
+        </section>
       </section>
     </AppShell>
   );

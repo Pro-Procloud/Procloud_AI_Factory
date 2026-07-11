@@ -46,6 +46,23 @@ export default async function RunDetailPage({ params }: { params: Promise<{ runI
             />
           </div>
         </div>
+        <section className="rounded-md border border-line bg-panel p-4 shadow-subtle">
+          <h2 className="text-base font-semibold">Failure recovery</h2>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            <div className="rounded-md border border-line p-3 text-sm">
+              <p className="font-semibold">Budget pause</p>
+              <p className="mt-1 text-muted">Paused by budget circuit breaker at 80% warning threshold.</p>
+            </div>
+            <div className="rounded-md border border-line p-3 text-sm">
+              <p className="font-semibold">Agent retry</p>
+              <p className="mt-1 text-muted">Retry backend_coder or abort when an execution event fails.</p>
+            </div>
+            <div className="rounded-md border border-line p-3 text-sm">
+              <p className="font-semibold">Escalation</p>
+              <p className="mt-1 text-muted">Escalate to human owner after max review loop or blocking risk.</p>
+            </div>
+          </div>
+        </section>
         <Timeline events={run.timeline} />
       </section>
     </AppShell>

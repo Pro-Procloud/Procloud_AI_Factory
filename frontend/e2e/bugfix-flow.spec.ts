@@ -10,7 +10,8 @@ test("clicks through the Bugfix prototype flow", async ({ page }) => {
 
   await page.getByRole("link", { name: "View Gate Result" }).click();
   await expect(page.getByRole("heading", { name: "G3 MR Approval" })).toBeVisible();
-  await expect(page.getByRole("button", { name: /Approve MR/ })).toBeVisible();
+  await page.getByRole("link", { name: /Approve MR/ }).click();
+  await expect(page.getByText("Approval recorded")).toBeVisible();
 
   await page.getByRole("link", { name: "Architecture" }).click();
   await expect(page.getByRole("heading", { name: "Plane → Gateway → LangGraph → Agent → MR" })).toBeVisible();
